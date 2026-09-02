@@ -1,11 +1,11 @@
 const beamMods = [
     {
         id: "cherrier-ffx",
-        name: "Cherrier FFX Custom Overhaul V10",
+        name: "GR Supra - Redline Autos",
         category: "Supercars",
-        image: "images/ffx.jpg", // 🆕 Path to your car screenshot
+        image: "https://static.wixstatic.com/media/252168_551c98a21efe4f8ba3799ef19ec41f2d~mv2.png/v1/fill/w_1853,h_796,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/252168_551c98a21efe4f8ba3799ef19ec41f2d~mv2.png", // 🆕 Path to your car screenshot
         size: "142 MB",
-        description: "A complete custom build featuring optimized Jbeam node structures and a re-tuned V10 twin-turbo physics engine model.",
+        description: "Fixed for 0.39. The GR Supra is Toyota's newest addition to the Supra lineup. Included in the mod is the 2JZ-GTE engine making 320hp from factory.",
         qiwiLink: "YOUR_QIWI_LINK_HERE_1"
     },
     {
