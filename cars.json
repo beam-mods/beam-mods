@@ -1,20 +1,29 @@
 [
   {
     "slug": "namiata",
-    "name": "NA Mazda Miata - Redline Auto",
+    "name": "NA Miata",
     "developer": "Redline Auto",
     "type": "Car",
-    "size": "42 MB",
+    "description": "Fully working in 0.39, checked 9/2/26.",
     "image": "https://static.wixstatic.com/media/252168_290c5d2af5b543739bd91e5902a85af8~mv2.jpg/v1/fill/w_452,h_242,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/252168_290c5d2af5b543739bd91e5902a85af8~mv2.jpg",
-    "downloadUrl": "https://example.com"
+    "downloadUrl": "https://modsfire.com/d4eJ7h30E3gHX1I"
   },
   {
-    "slug": "ibishu-covet",
-    "name": "Ibishu Covet Track Edition",
-    "developer": "Tuning / Racing",
+    "slug": "grsupra",
+    "name": "GR Supra",
+    "developer": "Redline Auto",
     "type": "Car",
-    "size": "18 MB",
-    "image": "https://unsplash.com",
+    "description": "Fully working in 0.39, checked 9/2/26.",
+    "image": "https://static.wixstatic.com/media/252168_3584bd143a64461a8a5f69645a792758~mv2.jpg/v1/fill/w_1025,h_820,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/252168_3584bd143a64461a8a5f69645a792758~mv2.jpg",
     "downloadUrl": "https://example.com"
-  }
+  },
+ {
+    "slug": "rivian",
+    "name": "Rivian R1T",
+    "developer": "Kenemation",
+    "type": "Car",
+    "description": "Fully working in 0.39, checked 9/2/26.",
+    "image": "https://temp2.modland.net/i/6a4a2a9c6e389/6a5cd84b36470/0-lg_modland.webp",
+    "downloadUrl": "https://modsfire.com/Nz1lq54dG7KDVeT"
+ }
 ]
