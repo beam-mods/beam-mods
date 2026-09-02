@@ -4,47 +4,176 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BeamDex - Secure Download Terminal</title>
-    <script src="https://tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #0b0f19;
+            color: #e2e8f0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+        header {
+            background-color: #111827;
+            border-bottom: 1px solid #1f2937;
+            padding: 15px 20px;
+        }
+        .header-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 18px;
+            font-weight: 900;
+            color: #10b981;
+            text-decoration: none;
+        }
+        .back-link {
+            font-size: 13px;
+            color: #9ca3af;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            color: #10b981;
+        }
+        main {
+            max-width: 700px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .terminal-box {
+            background-color: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .tag {
+            background-color: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 6px 14px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+        h2 {
+            font-size: 26px;
+            font-weight: 900;
+            color: #ffffff;
+            margin: 20px 0 10px 0;
+        }
+        .sub {
+            font-size: 14px;
+            color: #9ca3af;
+            font-style: italic;
+            margin: 0 0 30px 0;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #1f2937;
+            margin: 30px 0;
+        }
+        /* 📊 Ad Box Container */
+        .ad-container {
+            width: 100%;
+            min-height: 90px;
+            background-color: #0b0f19;
+            border: 1px dashed #1f2937;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .ad-text {
+            font-size: 11px;
+            color: #374151;
+        }
+        /* Timer Configuration */
+        .cooldown-area {
+            margin: 40px 0;
+        }
+        .cooldown-text {
+            font-size: 15px;
+            color: #d1d5db;
+        }
+        .timer-countdown {
+            font-size: 72px;
+            font-weight: 900;
+            color: #10b981;
+            margin: 15px 0;
+            letter-spacing: -2px;
+        }
+        /* Master Download Action Action Button */
+        .dl-btn {
+            display: none;
+            background: linear-gradient(to right, #10b981, #06b6d4);
+            color: #0b0f19;
+            font-size: 16px;
+            font-weight: 900;
+            padding: 18px 40px;
+            border-radius: 14px;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
+            transition: all 0.2s ease;
+            letter-spacing: 0.5px;
+            margin: 30px 0;
+        }
+        .dl-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 25px rgba(16, 185, 129, 0.3);
+        }
+        .footer-note {
+            font-size: 11px;
+            color: #4b5563;
+            margin-top: 10px;
+        }
+    </style>
 </head>
-<body class="bg-gray-950 text-gray-100 font-sans antialiased">
+<body>
 
-    <header class="bg-gray-900 border-b border-gray-800 p-4 shadow-md">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-black text-emerald-400 tracking-wider">BEAMDEX TERMINAL</h1>
-            <a href="index.html" class="text-sm font-semibold hover:text-emerald-400">← Back to Index</a>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">⚡ BEAMDEX</a>
+            <a href="index.html" class="back-link">← Back to Index</a>
         </div>
     </header>
 
-    <main class="max-w-3xl mx-auto mt-12 p-4">
-        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 shadow-2xl text-center">
-            <span id="mod-cat" class="bg-emerald-500/20 text-emerald-400 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider"></span>
-            
-            <h2 id="mod-title" class="text-2xl font-black mt-4 text-white">Loading Verification Secure Tunnel...</h2>
-            <p class="text-gray-400 text-sm mt-2 italic">Clean direct archive transfer via Qiwi.gg</p>
+    <main>
+        <div class="terminal-box">
+            <span id="mod-cat" class="tag"></span>
+            <h2 id="mod-title">Loading Parameters...</h2>
+            <p class="sub">Clean direct archive transfer via Qiwi.gg</p>
 
-            <hr class="border-gray-800 my-6">
+            <hr>
 
-            <!-- 📊 TOP A-ADS SLOT -->
-            <div class="flex justify-center my-4 min-h-[90px] bg-gray-950 border border-dashed border-gray-800 rounded-xl">
-                <p class="text-xs text-gray-600 self-center">A-Ads Banner #1 Placement</p>
+            <!-- 📊 TOP AD SLOT (Paste your horizontal ad code directly over the paragraph tag below) -->
+            <div class="ad-container">
+                <p class="ad-text">A-Ads Banner #1 Placement</p>
             </div>
 
-            <div id="cooldown-area" class="my-8">
-                <p class="text-md text-gray-300">Securing your direct clean download tunnel...</p>
-                <div id="timer" class="text-6xl font-black text-emerald-400 my-4 tracking-tight">5</div>
+            <!-- Cooldown UI Block -->
+            <div id="cooldown-area" class="cooldown-area">
+                <p class="cooldown-text">Securing your direct clean download tunnel...</p>
+                <div id="timer" class="timer-countdown">5</div>
+                <p class="footer-note">Thank you for supporting our archival hosting uptime!</p>
             </div>
 
-            <div class="my-6">
-                <a id="download-link" href="#" class="hidden bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-gray-950 font-black px-10 py-5 rounded-xl shadow-lg text-lg tracking-wide transition-all transform hover:scale-105 duration-200">
-                    📥 DOWNLOAD STRUCTURAL FILE (.ZIP)
-                </a>
-            </div>
+            <!-- Master Action Action Button Link -->
+            <a id="download-link" href="#" class="dl-btn">📥 DOWNLOAD STRUCTURAL FILE (.ZIP)</a>
 
-            <!-- 📊 BOTTOM A-ADS SLOT -->
-            <div class="flex justify-center my-4 min-h-[90px] bg-gray-950 border border-dashed border-gray-800 rounded-xl">
-                <p class="text-xs text-gray-600 self-center">A-Ads Banner #2 Placement</p>
+            <!-- 📊 BOTTOM AD SLOT (Paste your ad code directly over the paragraph tag below) -->
+            <div class="ad-container">
+                <p class="ad-text">A-Ads Banner #2 Placement</p>
             </div>
-
         </div>
     </main>
 
@@ -56,7 +185,7 @@
 
         if (activeMod) {
             document.getElementById('mod-title').textContent = activeMod.name;
-            document.getElementById('mod-cat').textContent = `Category: ${activeMod.category}`;
+            document.getElementById('mod-cat').textContent = activeMod.category;
             document.getElementById('download-link').href = activeMod.qiwiLink;
 
             let timeLeft = 5;
@@ -70,9 +199,8 @@
 
                 if (timeLeft <= 0) {
                     clearInterval(countdownInterval);
-                    cooldownArea.classList.add('hidden'); 
-                    downloadButton.classList.remove('hidden'); 
-                    downloadButton.classList.add('inline-block');
+                    cooldownArea.style.display = 'none'; 
+                    downloadButton.style.display = 'inline-block'; 
                 }
             }, 1000);
         } else {
