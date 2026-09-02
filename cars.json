@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "gavril-vertex",
+    "name": "2026 Gavril Vertex Custom",
+    "category": "Lore-Friendly",
+    "size": "42 MB",
+    "image": "https://unsplash.com",
+    "downloadUrl": "https://example.com"
+  },
+  {
+    "slug": "ibishu-covet",
+    "name": "Ibishu Covet Track Edition",
+    "category": "Tuning / Racing",
+    "size": "18 MB",
+    "image": "https://unsplash.com",
+    "downloadUrl": "https://example.com"
+  }
+]
