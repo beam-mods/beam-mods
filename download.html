@@ -3,176 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeamDex - Secure Download Terminal</title>
+    <title>BeamDex - Secure File Terminal</title>
     <style>
         body {
-            background-color: #0b0f19;
-            color: #e2e8f0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #121214;
+            color: #e1e1e6;
+            font-family: Inter, system-ui, -apple-system, sans-serif;
             margin: 0;
             padding: 0;
-            line-height: 1.5;
+            line-height: 1.6;
         }
         header {
-            background-color: #111827;
-            border-bottom: 1px solid #1f2937;
-            padding: 15px 20px;
+            background-color: #1a1a1e;
+            border-bottom: 1px solid #29292e;
+            padding: 16px 40px;
         }
-        .header-container {
+        .header-flex {
             max-width: 800px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .logo {
+        .logo-text {
             font-size: 18px;
-            font-weight: 900;
-            color: #10b981;
+            font-weight: 800;
+            color: #ffffff;
             text-decoration: none;
         }
-        .back-link {
+        .exit-link {
             font-size: 13px;
-            color: #9ca3af;
+            color: #8d8d99;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
         }
-        .back-link:hover {
-            color: #10b981;
+        .exit-link:hover {
+            color: #ffffff;
         }
         main {
-            max-width: 700px;
+            max-width: 760px;
             margin: 60px auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
-        .terminal-box {
-            background-color: #111827;
-            border: 1px solid #1f2937;
-            border-radius: 24px;
+        .terminal-panel {
+            background-color: #1a1a1e;
+            border: 1px solid #29292e;
+            border-radius: 8px;
             padding: 40px;
             text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
-        .tag {
-            background-color: rgba(16, 185, 129, 0.15);
-            color: #10b981;
+        .category-label {
+            background-color: #29292e;
+            border: 1px solid #323238;
+            color: #c4c4cc;
             font-size: 11px;
-            font-weight: 800;
-            padding: 6px 14px;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 4px;
             display: inline-block;
+            text-transform: uppercase;
         }
         h2 {
-            font-size: 26px;
-            font-weight: 900;
+            font-size: 24px;
+            font-weight: 800;
             color: #ffffff;
-            margin: 20px 0 10px 0;
+            margin: 16px 0 8px 0;
+            letter-spacing: -0.5px;
         }
-        .sub {
-            font-size: 14px;
-            color: #9ca3af;
-            font-style: italic;
-            margin: 0 0 30px 0;
+        .sub-annotation {
+            font-size: 13px;
+            color: #8d8d99;
+            margin: 0 0 24px 0;
         }
         hr {
             border: 0;
-            border-top: 1px solid #1f2937;
-            margin: 30px 0;
+            border-top: 1px solid #29292e;
+            margin: 24px 0;
         }
-        /* 📊 Ad Box Container */
-        .ad-container {
+        /* 📊 Standardized Advertisement Panel */
+        .ad-banner-slot {
             width: 100%;
             min-height: 90px;
-            background-color: #0b0f19;
-            border: 1px dashed #1f2937;
-            border-radius: 12px;
+            background-color: #121214;
+            border: 1px dashed #29292e;
+            border-radius: 6px;
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 20px 0;
         }
-        .ad-text {
+        .ad-placeholder-text {
             font-size: 11px;
-            color: #374151;
+            color: #52525b;
+            font-family: monospace;
         }
-        /* Timer Configuration */
-        .cooldown-area {
-            margin: 40px 0;
+        /* Countdown Layout */
+        .countdown-wrapper {
+            margin: 32px 0;
         }
-        .cooldown-text {
-            font-size: 15px;
-            color: #d1d5db;
+        .countdown-instruction {
+            font-size: 14px;
+            color: #c4c4cc;
         }
-        .timer-countdown {
-            font-size: 72px;
-            font-weight: 900;
-            color: #10b981;
-            margin: 15px 0;
-            letter-spacing: -2px;
+        .numeric-timer {
+            font-size: 64px;
+            font-weight: 800;
+            color: #00b37e;
+            margin: 8px 0;
         }
-        /* Master Download Action Action Button */
-        .dl-btn {
+        /* Master Access Button */
+        .gate-access-button {
             display: none;
-            background: linear-gradient(to right, #10b981, #06b6d4);
-            color: #0b0f19;
-            font-size: 16px;
-            font-weight: 900;
-            padding: 18px 40px;
-            border-radius: 14px;
+            background-color: #00b37e;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 16px 32px;
+            border-radius: 4px;
             text-decoration: none;
-            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
-            transition: all 0.2s ease;
-            letter-spacing: 0.5px;
-            margin: 30px 0;
+            transition: background-color 0.15s ease;
+            margin: 24px 0;
         }
-        .dl-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 25px rgba(16, 185, 129, 0.3);
+        .gate-access-button:hover {
+            background-color: #00875f;
         }
-        .footer-note {
+        .system-footer-note {
             font-size: 11px;
-            color: #4b5563;
-            margin-top: 10px;
+            color: #7c7c8a;
+            margin-top: 12px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="header-container">
-            <a href="index.html" class="logo">⚡ BEAMDEX</a>
-            <a href="index.html" class="back-link">← Back to Index</a>
+        <div class="header-flex">
+            <a href="index.html" class="logo-text">BEAMDEX</a>
+            <a href="index.html" class="exit-link">Return to Catalog</a>
         </div>
     </header>
 
     <main>
-        <div class="terminal-box">
-            <span id="mod-cat" class="tag"></span>
-            <h2 id="mod-title">Loading Parameters...</h2>
-            <p class="sub">Clean direct archive transfer via Qiwi.gg</p>
+        <div class="terminal-panel">
+            <span id="mod-cat" class="category-label"></span>
+            <h2 id="mod-title">Requesting Server Verification...</h2>
+            <p class="sub-annotation">Data Stream Channel: Qiwi.gg Cloud Infrastructure</p>
 
             <hr>
 
-            <!-- 📊 TOP AD SLOT (Paste your horizontal ad code directly over the paragraph tag below) -->
-            <div class="ad-container">
-                <p class="ad-text">A-Ads Banner #1 Placement</p>
+            <!-- 📊 TOP MONETIZATION SLOT (Paste your horizontal A-Ads iframe here) -->
+            <div class="ad-banner-slot">
+                <p class="ad-placeholder-text">Monetization Unit Alpha (728x90)</p>
             </div>
 
-            <!-- Cooldown UI Block -->
-            <div id="cooldown-area" class="cooldown-area">
-                <p class="cooldown-text">Securing your direct clean download tunnel...</p>
-                <div id="timer" class="timer-countdown">5</div>
-                <p class="footer-note">Thank you for supporting our archival hosting uptime!</p>
+            <!-- Cooldown State Machine -->
+            <div id="cooldown-area" class="countdown-wrapper">
+                <p class="countdown-instruction">Resolving direct file access path safely...</p>
+                <div id="timer" class="numeric-timer">5</div>
+                <p class="system-footer-note">Hosting and certificate stability is maintained via background telemetry impressions.</p>
             </div>
 
-            <!-- Master Action Action Button Link -->
-            <a id="download-link" href="#" class="dl-btn">📥 DOWNLOAD STRUCTURAL FILE (.ZIP)</a>
+            <!-- Master Access Target Button -->
+            <a id="download-link" href="#" class="gate-access-button">Download Verified Archive (.zip)</a>
 
-            <!-- 📊 BOTTOM AD SLOT (Paste your ad code directly over the paragraph tag below) -->
-            <div class="ad-container">
-                <p class="ad-text">A-Ads Banner #2 Placement</p>
+            <!-- 📊 BOTTOM MONETIZATION SLOT (Paste your horizontal A-Ads iframe here) -->
+            <div class="ad-banner-slot">
+                <p class="ad-placeholder-text">Monetization Unit Beta (728x90)</p>
             </div>
         </div>
     </main>
@@ -204,7 +200,7 @@
                 }
             }, 1000);
         } else {
-            document.getElementById('mod-title').textContent = "Mod File Flagged or Missing";
+            document.getElementById('mod-title').textContent = "Asset Registry Entry Invalid";
         }
     </script>
 </body>
