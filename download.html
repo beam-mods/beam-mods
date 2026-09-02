@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeamDex - Secure Download Terminal</title>
+    <script src="https://tailwindcss.com"></script>
+</head>
+<body class="bg-gray-950 text-gray-100 font-sans antialiased">
+
+    <header class="bg-gray-900 border-b border-gray-800 p-4 shadow-md">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-black text-emerald-400 tracking-wider">BEAMDEX TERMINAL</h1>
+            <a href="index.html" class="text-sm font-semibold hover:text-emerald-400">← Back to Index</a>
+        </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto mt-12 p-4">
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 shadow-2xl text-center">
+            <span id="mod-cat" class="bg-emerald-500/20 text-emerald-400 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider"></span>
+            
+            <h2 id="mod-title" class="text-2xl font-black mt-4 text-white">Loading Verification Secure Tunnel...</h2>
+            <p class="text-gray-400 text-sm mt-2 italic">Clean direct archive transfer via Qiwi.gg</p>
+
+            <hr class="border-gray-800 my-6">
+
+            <!-- 📊 TOP A-ADS SLOT -->
+            <div class="flex justify-center my-4 min-h-[90px] bg-gray-950 border border-dashed border-gray-800 rounded-xl">
+                <p class="text-xs text-gray-600 self-center">A-Ads Banner #1 Placement</p>
+            </div>
+
+            <div id="cooldown-area" class="my-8">
+                <p class="text-md text-gray-300">Securing your direct clean download tunnel...</p>
+                <div id="timer" class="text-6xl font-black text-emerald-400 my-4 tracking-tight">5</div>
+            </div>
+
+            <div class="my-6">
+                <a id="download-link" href="#" class="hidden bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-gray-950 font-black px-10 py-5 rounded-xl shadow-lg text-lg tracking-wide transition-all transform hover:scale-105 duration-200">
+                    📥 DOWNLOAD STRUCTURAL FILE (.ZIP)
+                </a>
+            </div>
+
+            <!-- 📊 BOTTOM A-ADS SLOT -->
+            <div class="flex justify-center my-4 min-h-[90px] bg-gray-950 border border-dashed border-gray-800 rounded-xl">
+                <p class="text-xs text-gray-600 self-center">A-Ads Banner #2 Placement</p>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="data.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const modId = urlParams.get('mod');
+        const activeMod = beamMods.find(m => m.id === modId);
+
+        if (activeMod) {
+            document.getElementById('mod-title').textContent = activeMod.name;
+            document.getElementById('mod-cat').textContent = `Category: ${activeMod.category}`;
+            document.getElementById('download-link').href = activeMod.qiwiLink;
+
+            let timeLeft = 5;
+            const timerElement = document.getElementById('timer');
+            const cooldownArea = document.getElementById('cooldown-area');
+            const downloadButton = document.getElementById('download-link');
+
+            const countdownInterval = setInterval(() => {
+                timeLeft--;
+                timerElement.textContent = timeLeft;
+
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    cooldownArea.classList.add('hidden'); 
+                    downloadButton.classList.remove('hidden'); 
+                    downloadButton.classList.add('inline-block');
+                }
+            }, 1000);
+        } else {
+            document.getElementById('mod-title').textContent = "Mod File Flagged or Missing";
+        }
+    </script>
+</body>
+</html>
