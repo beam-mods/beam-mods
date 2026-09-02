@@ -40,6 +40,7 @@
         .about-note { border-top: 2px solid #f0782b; color: #b4bfcc !important; padding: 14px 18px 0; }
         .site-footer { max-width: 1100px; width: 100%; margin: auto auto 0; padding: 24px 20px 28px; box-sizing: border-box; color: #8e9baa !important; font-size: 11px; line-height: 1.55; text-align: center; }
         .site-footer strong { color: #c1cad5 !important; }
+        .card-description { display: block; max-width: 100%; color: #aeb9c6 !important; font: 12px/1.4 "Space Grotesk", "Segoe UI", sans-serif; }
         @media (max-width: 640px) {
             .header-nav { gap: 10px; }
             .index-intro { align-items: start; flex-direction: column; margin-top: 36px; }
@@ -481,6 +482,7 @@
         .card-meta { display: flex; flex-direction: column; justify-content: space-between; }
         .badge-cat { display: block; width: max-content; padding: 2px 8px; border-radius: 4px; font-size: 10px; text-transform: uppercase; font-weight: bold; }
         .card-name { font-size: 16px; line-height: 1.2; margin: 10px 0 0; }
+        .card-name + .card-description { margin-top: 8px; }
         .card-size { font-size: 12px; }
         .about-layout { max-width: 700px; margin: 58px auto 40px; }
         .about-copy { text-align: center; }
@@ -578,7 +580,8 @@
         .ad-top, .ad-side, .card, .home-card, .filter-control, .dl-main-img { border-color: #2b3543 !important; }
         .ad-top { min-height: 104px; margin-bottom: 28px !important; }
         .ad-frame-top { min-height: 76px; }
-        .ad-frame-top iframe { height: 76px !important; }
+        .ad-frame-top iframe { height: auto !important; }
+        .ad-side { min-height: 118px; padding: 20px 12px 8px; }
         .heading-txt { color: #e18a52; }
         .badge-cat { background: rgba(156, 66, 22, .14); color: #e99a68; }
         .index-intro { margin-top: 42px; }
@@ -671,20 +674,20 @@
     <main>
         <div class="ad-top">
             <!-- PASTE YOUR 728x90 A-ADS SCRIPT HERE -->
-<!-- BEGIN AADS AD UNIT 2454179 -->
+<!-- BEGIN AADS AD UNIT 2454198 -->
 
-<div id="frame" class="ad-frame-top">
-          <iframe data-aa='2454179' src='//acceptable.a-ads.com/2454179/?size=Adaptive'
-                            style='border:0; padding:0; width:100%; height:90px; overflow:hidden;display: block;margin: auto'></iframe>
+<div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;">
+      <iframe data-aa='2454198' src='//acceptable.a-ads.com/2454198/?size=Adaptive'
+                style='border:0; padding:0; width:70%; height:auto; overflow:hidden;display: block;margin: auto'></iframe>
         </div>
 
-<!-- END AADS AD UNIT 2454179 -->        </div>
+<!-- END AADS AD UNIT 2454198 -->        </div>
 
         <div id="pageContent" class="loading-screen">Loading repository content...</div>
     </main>
     <footer class="site-footer">
-        <strong>Beamdex is an index, not a file host.</strong><br>
-        We do not host mod files. Links lead to external websites and third-party services. We are not responsible for the content, availability, or security of external links.
+        <strong>Beamdex does not host mod files.</strong><br>
+        Links lead to external websites and third-party services. We are not responsible for the security of external links.
     </footer>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
@@ -732,9 +735,8 @@
             document.getElementById('pageContent').innerHTML = `
                 <section class="index-intro">
                     <div>
-                        <div class="heading-txt">Beamdex / The BeamNG Mod Index</div>
-                        <h1>Find your next<br>BeamNG mod.</h1>
-                        <p>A simple index of vehicles, maps, and other mods for your BeamNG garage.</p>
+                        <h1>Quality BeamNG mods...<br>but free.</h1>
+                        <p>A growing collection of BeamNG mods, with patches for 0.39.</p>
                     </div>
                     <div class="index-stats">
                         <div class="stat"><strong>${cars.length}</strong><span>mods</span></div>
@@ -769,8 +771,8 @@
                                 <div>
                                     <span class="badge-cat">${car.type || 'Other'} · ${car.developer || 'Unknown'}</span>
                                     <h3 class="card-name">${car.name}</h3>
+                                    <span class="card-description">${car.description || 'No description yet'}</span>
                                 </div>
-                                <span class="card-size">${car.size}</span>
                             </div>
                         </a>`).join('')
                     : '<div class="empty-state">No matching content found.</div>';
@@ -790,9 +792,9 @@
                     <div class="card">
                         <div class="dl-header-row">
                             <span class="badge-cat">${car.type || 'Other'} · ${car.developer || 'Unknown'}</span>
-                            <span class="card-size" style="font-family: monospace;">${car.size}</span>
                         </div>
                         <h1 class="card-name" style="font-size: 22px; margin-bottom: 16px;">${car.name}</h1>
+                        <span class="card-description">${car.description || 'No description yet'}</span>
                         <img src="${car.image}" class="dl-main-img" alt="Main Showcase Grid Render">
                     </div>
                     
@@ -800,17 +802,6 @@
                         <div class="card btn-box">
                             <h3>File Security Check</h3>
                             <button id="timerBtn" disabled class="action-btn btn-wait">Preparing Route (5s)</button>
-                        </div>
-                        
-                        <div class="ad-side">
-<!-- BEGIN AADS AD UNIT 2454186 -->
-
-<div id="frame" style="width: 300px;margin: auto;z-index: 99998;height: auto">
-          <iframe data-aa='2454186' src='//ad.a-ads.com/2454186/?size=300x250'
-                            style='border:0; padding:0; width:300px; height:250px; overflow:hidden;display: block;margin: auto'></iframe>
-        </div>
-
-<!-- END AADS AD UNIT 2454186 -->
                         </div>
                     </div>
                 </div>`;
