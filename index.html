@@ -4,61 +4,138 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beamdex</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Final theme overrides */
+        html, body { min-height: 100%; }
+        body { margin: 0; background: #10161e !important; color: #edf1f5 !important; font-family: "Space Grotesk", "Segoe UI", sans-serif !important; }
+        header { display: block; background: #151c25 !important; border-bottom: 1px solid #26313e !important; padding: 18px 16px !important; }
+        .header-wrap { display: flex; max-width: 1100px; margin: 0 auto; align-items: center; justify-content: space-between; }
+        header .header-wrap > a { color: #edf1f5 !important; font: 700 21px "Space Grotesk", "Segoe UI", sans-serif; letter-spacing: .04em; text-decoration: none !important; }
+        header .header-wrap > a span { color: #f0782b; }
+        .header-nav { display: flex; align-items: center; gap: 22px; }
+        .header-nav a { color: #b8c3d0 !important; font: 500 11px "DM Mono", monospace; letter-spacing: .04em; text-decoration: none !important; }
+        .header-nav a:hover { color: #ffffff !important; }
+        main { width: 100%; max-width: 1100px; margin: 0 auto; padding: 16px 20px 0; box-sizing: border-box; }
+        .ad-top { min-height: 104px; margin-bottom: 18px; background: #141a22 !important; border: 1px solid #2b3543 !important; border-radius: 4px; }
+        .index-intro { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin: 42px 0 28px; }
+        .index-intro h1, .about-copy h1 { color: #edf1f5 !important; font-family: "Space Grotesk", "Segoe UI", sans-serif !important; }
+        .index-intro h1 { font-size: clamp(30px, 5vw, 48px); line-height: 1.05; letter-spacing: -.02em; }
+        .index-intro p, .about-copy p { color: #a8b3c0 !important; }
+        .catalog-shell { border-top: 1px solid #26313e !important; padding-top: 20px; }
+        .catalog-tools { display: grid; grid-template-columns: minmax(220px, 2fr) 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+        .filter-control { min-height: 42px; box-sizing: border-box; background: #141a22 !important; border: 1px solid #2b3543 !important; border-radius: 5px; color: #edf1f5 !important; padding: 0 12px; font-family: "Space Grotesk", "Segoe UI", sans-serif; }
+        .grid-home { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .card, .home-card { background: #171e28 !important; border: 1px solid #2b3543 !important; border-radius: 6px; box-shadow: 0 5px 16px rgba(0,0,0,.16); }
+        .home-card { display: flex; gap: 18px; padding: 16px; color: inherit; text-decoration: none; }
+        .card-thumb { width: 126px; height: 104px; object-fit: cover; flex-shrink: 0; border: 1px solid #2b3543; border-radius: 3px; }
+        .card-name { color: #edf1f5 !important; }
+        .card-size, .results-count, .stat span { color: #c2ccd8 !important; }
+        .badge-cat { background: rgba(156,66,22,.14) !important; color: #e99a68 !important; }
+        .about-layout { max-width: 700px; margin: 58px auto 40px; }
+        .about-copy { text-align: center; }
+        .about-copy h1 { font-size: clamp(34px, 5vw, 48px); line-height: 1.05; letter-spacing: -.02em; margin: 0; }
+        .about-note { border-top: 2px solid #f0782b; color: #b4bfcc !important; padding: 14px 18px 0; }
+        .site-footer { max-width: 1100px; width: 100%; margin: auto auto 0; padding: 24px 20px 28px; box-sizing: border-box; color: #8e9baa !important; font-size: 11px; line-height: 1.55; text-align: center; }
+        .site-footer strong { color: #c1cad5 !important; }
+        @media (max-width: 640px) {
+            .header-nav { gap: 10px; }
+            .index-intro { align-items: start; flex-direction: column; margin-top: 36px; }
+            .index-stats { width: 100%; }
+            .catalog-tools, .grid-home { grid-template-columns: 1fr; }
+            .card-thumb { width: 100px; height: 92px; }
+        }
+    </style>
+    <style>
+        :root {
+            --ink: #f5f7fa;
+            --muted: #8993a5;
+            --line: #263143;
+            --panel: rgba(18, 27, 42, 0.88);
+            --orange: #ff7a1a;
+            --green: #43d69b;
+        }
         body {
-            background-color: #0b0f17;
-            color: #e2e8f0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
+            background: #080d15;
+            background-image: linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+            background-size: 32px 32px;
+                    --ink: #17202c;
+                    --muted: #667085;
+                    --line: #e2e6eb;
+                    --panel: #ffffff;
+                    --orange: #e66a1f;
+                    --green: #16845d;
             flex-direction: column;
         }
-        header {
-            background-color: #111827;
-            border-bottom: 1px solid #1f2937;
-            padding: 16px;
+                    background: #f5f6f8;
+            padding: 18px 16px;
+                    font-family: Arial, Helvetica, sans-serif;
+            top: 0;
+            z-index: 2;
+                    background: #ffffff;
         }
-        .header-wrap {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
+                    padding: 16px;
             align-items: center;
         }
-        header a {
-            text-decoration: none;
-            color: #ffffff;
-            font-size: 20px;
-            font-weight: 900;
-            letter-spacing: 0.05em;
+                    color: var(--ink);
+                    font-size: 20px;
+                    font-weight: 800;
+                    letter-spacing: 0.04em;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+                    font-size: 11px;
+                    font-weight: 700;
+                    letter-spacing: 0.04em;
+            display: flex;
+            align-items: center;
+                    font-size: 11px;
+                    color: var(--green);
+                    background-color: #edf8f3;
+                    border: 1px solid #c8ebdc;
+            letter-spacing: 0.1em;
         }
-        header span {
-            color: #f97316;
+                    font-weight: 600;
+            color: var(--orange);
         }
         .badge-status {
-            font-size: 12px;
-            color: #34d399;
-            background-color: rgba(6, 78, 59, 0.4);
-            border: 1px solid #064e3b;
+            font-family: "DM Mono", monospace;
+            font-size: 10px;
+            color: #b8f5d9;
+            background-color: rgba(22, 101, 72, 0.22);
+            border: 1px solid rgba(67, 214, 155, 0.3);
             padding: 4px 10px;
-            border-radius: 4px;
-            font-weight: bold;
+                    box-shadow: none;
+            font-weight: 500;
+        }
+        .badge-status::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            margin-right: 7px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 0 3px rgba(67, 214, 155, 0.12), 0 0 9px rgba(67, 214, 155, 0.7);
+            animation: status-pulse 2.4s ease-in-out infinite;
         }
         main {
             flex-grow: 1;
-            max-width: 1000px;
+            max-width: 1100px;
             width: 100%;
             margin: 0 auto;
             padding: 20px;
             box-sizing: border-box;
         }
         .ad-top {
+            position: relative;
             width: 100%;
-            background-color: #111827;
-            border: 1px solid #1f2937;
-            min-height: 90px;
+            background-color: rgba(13, 20, 32, 0.76);
+            border: 1px solid var(--line);
+            min-height: 118px;
+            padding: 20px 12px 8px;
+            box-sizing: border-box;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -67,10 +144,21 @@
             overflow: hidden;
         }
         .ad-label {
-            font-size: 11px;
-            color: #4b5563;
-            letter-spacing: 0.1em;
+            position: absolute;
+            top: 8px;
+            left: 12px;
+            font: 9px "DM Mono", monospace;
+            color: #586579;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
+        }
+        .ad-top .ad-label { top: 8px; }
+        .ad-frame-top {
+            width: min(728px, 100%);
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .grid-home {
             display: grid;
@@ -87,34 +175,133 @@
             .grid-download { grid-template-columns: 2fr 1fr; }
         }
         .heading-txt {
-            font-size: 18px;
-            font-weight: bold;
-            color: #ffffff;
-            margin-bottom: 16px;
+            font-size: 12px;
+            font-family: "DM Mono", monospace;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+                    font-size: clamp(30px, 5vw, 48px);
+                    line-height: 1.05;
+                    letter-spacing: -0.02em;
+        .index-intro {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 24px;
+            margin: 52px 0 28px;
+        }
+        .index-intro h1 {
+            max-width: 650px;
+            font-size: clamp(30px, 5vw, 54px);
+            line-height: 0.98;
+            letter-spacing: -0.04em;
+            margin: 0;
+        }
+        .index-intro p {
+            max-width: 420px;
+            color: var(--muted);
+            line-height: 1.6;
+            margin: 12px 0 0;
+        }
+        .index-stats {
+            display: flex;
+            flex-shrink: 0;
+            gap: 8px;
+        }
+        .stat {
+            padding: 2px 0 2px 12px;
+            min-width: 72px;
+        }
+        .stat strong, .stat span { display: block; }
+        .stat strong { font-size: 22px; }
+        .stat span { color: var(--muted); font: 10px "DM Mono", monospace; text-transform: uppercase; margin-top: 4px; }
+        .catalog-shell {
+            border-top: 1px solid var(--line);
+            padding-top: 20px;
+        }
+        .catalog-tools {
+            display: grid;
+            grid-template-columns: minmax(220px, 2fr) 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+        .filter-control {
+            width: 100%;
+            min-height: 42px;
+            box-sizing: border-box;
+            background-color: rgba(14, 22, 35, 0.9);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            color: #e2e8f0;
+            font: inherit;
+            padding: 0 12px;
+        }
+        .filter-control:focus {
+            outline: 2px solid var(--orange);
+            outline-offset: 1px;
+        }
+        .results-count {
+            color: var(--muted);
+            font: 11px "DM Mono", monospace;
+            margin: -4px 0 14px;
+        }
+        .empty-state {
+            color: #9ca3af;
+            text-align: center;
+            padding: 36px 16px;
+        }
+        .about-layout {
+            max-width: 700px;
+            margin: 58px auto 40px;
+        }
+        .about-copy { text-align: center; }
+        .about-copy h1 {
+            font-size: clamp(34px, 5vw, 58px);
+            line-height: 0.98;
+            letter-spacing: -0.04em;
+            margin: 0;
+        }
+        .about-copy p {
+            color: var(--muted);
+            line-height: 1.65;
+            margin: 18px 0 0;
+        }
+        .about-note {
+            border-top: 2px solid var(--orange);
+            color: #c9d1dc;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 30px;
+            padding: 14px 18px 0;
         }
         .card {
-            background-color: #111827;
-            border: 1px solid #1f2937;
-            border-radius: 8px;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 5px;
             padding: 16px;
             box-sizing: border-box;
         }
         .home-card {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             text-decoration: none;
             color: inherit;
-            transition: border-color 0.2s;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+            animation: card-in 0.4s ease both;
         }
         .home-card:hover {
-            border-color: rgba(249, 115, 22, 0.5);
+            border-color: rgba(255, 122, 26, 0.7);
+            background: #172235;
+            transform: translateY(-3px);
         }
+        .home-card:nth-child(2) { animation-delay: 80ms; }
+        .home-card:nth-child(3) { animation-delay: 160ms; }
+        .home-card:nth-child(4) { animation-delay: 240ms; }
         .card-thumb {
-            width: 90px;
-            height: 90px;
-            border-radius: 4px;
+            width: 126px;
+            height: 104px;
+            border-radius: 3px;
             object-fit: cover;
-            border: 1px solid #1f2937;
+            border: 1px solid var(--line);
             flex-shrink: 0;
         }
         .card-meta {
@@ -123,11 +310,11 @@
             justify-content: space-between;
         }
         .badge-cat {
-            font-size: 10px;
+            font: 10px "DM Mono", monospace;
             text-transform: uppercase;
             font-weight: bold;
-            color: #fb923c;
-            background-color: rgba(124, 45, 18, 0.4);
+            color: var(--orange);
+            background-color: rgba(124, 45, 18, 0.28);
             padding: 2px 8px;
             border-radius: 4px;
             width: max-content;
@@ -136,14 +323,15 @@
             font-size: 16px;
             font-weight: bold;
             color: #ffffff;
-            margin: 6px 0 0 0;
+            line-height: 1.2;
+            margin: 10px 0 0 0;
         }
         .home-card:hover .card-name {
             color: #fb923c;
         }
         .card-size {
-            font-size: 12px;
-            color: #9ca3af;
+            font: 11px "DM Mono", monospace;
+            color: var(--muted);
         }
         .dl-header-row {
             display: flex;
@@ -200,21 +388,272 @@
             background-color: #10b981;
         }
         .ad-side {
+            position: relative;
             width: 100%;
-            background-color: #111827;
-            border: 1px solid #1f2937;
-            min-height: 250px;
+            background-color: rgba(13, 20, 32, 0.76);
+            border: 1px solid var(--line);
+            min-height: 280px;
+            padding: 28px 12px 12px;
+            box-sizing: border-box;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 6px;
             overflow: hidden;
         }
+        .ad-side .ad-label { top: 9px; }
         .loading-screen {
             text-align: center;
             padding: 50px 0;
             color: #9ca3af;
         }
+        @keyframes card-in {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes status-pulse {
+            0%, 100% { opacity: 0.65; }
+            50% { opacity: 1; }
+        }
+        @media (max-width: 640px) {
+            .header-nav { gap: 10px; }
+            .header-nav .badge-status { display: none; }
+            .index-intro { align-items: start; flex-direction: column; margin-top: 36px; }
+            .index-stats { width: 100%; }
+            .stat { flex: 1; }
+            .catalog-tools { grid-template-columns: 1fr; }
+            .card-thumb { width: 100px; height: 92px; }
+            .about-layout { margin-top: 36px; }
+        }
+    </style>
+    <style>
+        :root { --ink: #17202c; --muted: #667085; --line: #e2e6eb; --panel: #ffffff; --orange: #e66a1f; --green: #16845d; }
+        body { background: #f5f6f8; color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
+        header { background: #ffffff; border-bottom: 1px solid var(--line); padding: 16px; position: static; }
+        header a { color: var(--ink); font-family: Arial, Helvetica, sans-serif; font-size: 20px; font-weight: 800; letter-spacing: .04em; }
+        .header-nav { display: flex; align-items: center; gap: 18px; }
+        .header-nav a { color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: .04em; }
+        .header-nav a:hover { color: var(--ink); }
+        .badge-status { color: var(--green); background: #edf8f3; border: 1px solid #c8ebdc; font-size: 11px; font-weight: 600; letter-spacing: 0; }
+        .badge-status::before { box-shadow: none; animation: none; }
+        main { max-width: 1100px; padding: 20px; }
+        .ad-top, .ad-side { background: #ffffff; border: 1px solid var(--line); border-radius: 4px; }
+        .heading-txt { font-family: Arial, Helvetica, sans-serif; font-size: 12px; letter-spacing: .08em; }
+        .index-intro h1, .about-copy h1 { font-family: Arial, Helvetica, sans-serif; line-height: 1.05; letter-spacing: -.02em; }
+        .index-intro h1 { font-size: clamp(30px, 5vw, 48px); }
+        .stat { border: 0; }
+        .stat span, .results-count, .card-size { font-family: Arial, Helvetica, sans-serif; }
+        .filter-control { background: #ffffff; border: 1px solid #cfd5dd; border-radius: 5px; color: var(--ink); }
+        .filter-control:focus { outline: 2px solid rgba(230, 106, 31, .35); }
+        .card { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; box-shadow: 0 2px 8px rgba(23, 32, 44, .05); }
+        .home-card { transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+        .home-card:hover { border-color: rgba(230, 106, 31, .7); background: #fffaf6; }
+        .badge-cat { font-family: Arial, Helvetica, sans-serif; background: #fff1e8; color: #b95011; }
+        .card-name { color: var(--ink); }
+        .home-card:hover .card-name { color: #b95011; }
+        .dl-main-img { border-color: var(--line); }
+        .btn-wait { background: #eef1f4; color: #667085; }
+        .btn-go { background: var(--green); }
+        .btn-go:hover { background: #116c4c; }
+        .ad-label { font-family: Arial, Helvetica, sans-serif; }
+        .about-note { color: #596579; }
+        @media (max-width: 640px) {
+            .header-nav { gap: 10px; }
+            .header-nav .badge-status { display: none; }
+        }
+    </style>
+    <style>
+        .index-intro { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin: 52px 0 28px; }
+        .index-intro p { max-width: 420px; color: var(--muted); line-height: 1.6; margin: 12px 0 0; }
+        .index-stats { display: flex; flex-shrink: 0; gap: 8px; }
+        .stat { min-width: 72px; padding: 2px 0 2px 12px; }
+        .stat strong, .stat span { display: block; }
+        .stat strong { font-size: 22px; }
+        .stat span { color: var(--muted); font-size: 11px; text-transform: uppercase; margin-top: 4px; }
+        .catalog-shell { border-top: 1px solid var(--line); padding-top: 20px; }
+        .catalog-tools { display: grid; grid-template-columns: minmax(220px, 2fr) 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+        .filter-control { width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; }
+        .results-count { color: var(--muted); font-size: 12px; margin: -4px 0 14px; }
+        .grid-home { display: grid; grid-template-columns: 1fr; gap: 16px; }
+        .card { padding: 16px; box-sizing: border-box; }
+        .home-card { display: flex; gap: 18px; text-decoration: none; color: inherit; }
+        .card-thumb { width: 126px; height: 104px; border-radius: 3px; object-fit: cover; flex-shrink: 0; }
+        .card-meta { display: flex; flex-direction: column; justify-content: space-between; }
+        .badge-cat { display: block; width: max-content; padding: 2px 8px; border-radius: 4px; font-size: 10px; text-transform: uppercase; font-weight: bold; }
+        .card-name { font-size: 16px; line-height: 1.2; margin: 10px 0 0; }
+        .card-size { font-size: 12px; }
+        .about-layout { max-width: 700px; margin: 58px auto 40px; }
+        .about-copy { text-align: center; }
+        .about-copy h1 { font-size: clamp(34px, 5vw, 48px); margin: 0; }
+        .about-copy p { color: var(--muted); line-height: 1.65; margin: 18px 0 0; }
+        .about-note { color: #596579; font-size: 13px; line-height: 1.6; margin-top: 30px; padding: 14px 18px 0; }
+        @media (min-width: 768px) { .grid-home { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 640px) {
+            .index-intro { align-items: start; flex-direction: column; margin-top: 36px; }
+            .index-stats { width: 100%; }
+            .stat { flex: 1; }
+            .catalog-tools { grid-template-columns: 1fr; }
+            .card-thumb { width: 100px; height: 92px; }
+            .about-layout { margin-top: 36px; }
+        }
+    </style>
+    <style>
+        :root {
+            --ink: #edf1f5;
+            --muted: #9aa6b5;
+            --line: #2b3543;
+            --panel: #171e28;
+            --orange: #f0782b;
+            --green: #4ac995;
+        }
+        body {
+            background: #10161e;
+            color: var(--ink);
+            font-family: "Space Grotesk", "Segoe UI", sans-serif;
+        }
+        header {
+            background: #151c25;
+            border-bottom: 1px solid #26313e !important;
+            padding: 20px 16px;
+        }
+        header a {
+            color: var(--ink);
+            font-family: "Space Grotesk", "Segoe UI", sans-serif;
+            font-size: 21px;
+            text-decoration: none !important;
+        }
+        .header-nav { gap: 22px; }
+        .header-nav a { color: #c0cad6; font-family: "DM Mono", monospace; font-size: 11px; }
+        .header-nav a:hover { color: var(--ink); }
+        .badge-status {
+            color: #a9e8cb;
+            background: rgba(42, 142, 103, .16);
+            border-color: rgba(74, 201, 149, .28);
+            font-family: "DM Mono", monospace;
+            padding: 6px 11px;
+            font-size: 10px;
+        }
+        .badge-status::before {
+            background: var(--green);
+            box-shadow: 0 0 0 3px rgba(74, 201, 149, .12), 0 0 8px rgba(74, 201, 149, .5);
+            animation: status-pulse 2.4s ease-in-out infinite;
+        }
+        .ad-top, .ad-side { background: #141a22; border-color: var(--line); }
+        .ad-label { color: #6f7c8c; font-family: "DM Mono", monospace; }
+        .heading-txt { color: var(--orange); font-family: "DM Mono", monospace; }
+        .index-intro h1, .about-copy h1 { color: var(--ink); font-family: "Space Grotesk", "Segoe UI", sans-serif; }
+        .index-intro p, .about-copy p { color: #a8b3c0; }
+        .stat span, .results-count, .card-size { color: #c2ccd8; font-family: "DM Mono", monospace; }
+        .stat strong { color: #f5f7fa; }
+        .catalog-shell { border-top: 1px solid #26313e !important; }
+        .filter-control {
+            background: #141a22;
+            border-color: var(--line);
+            color: var(--ink);
+            font-family: "Space Grotesk", "Segoe UI", sans-serif;
+        }
+        .filter-control::placeholder { color: #8592a2; }
+        .filter-control:focus { outline-color: rgba(240, 120, 43, .5); }
+        .card {
+            background: var(--panel);
+            border-color: var(--line);
+            box-shadow: 0 5px 16px rgba(0, 0, 0, .16);
+        }
+        .home-card:hover { background: #1c2632; border-color: rgba(240, 120, 43, .62); }
+        .card-thumb { border-color: var(--line); }
+        .badge-cat { background: rgba(156, 66, 22, .2); color: #ff9a5c; font-family: "DM Mono", monospace; }
+        .card-name { color: var(--ink); font-family: "Space Grotesk", "Segoe UI", sans-serif; }
+        .home-card:hover .card-name { color: #ff9a5c; }
+        .dl-main-img { border-color: var(--line); }
+        .btn-wait { background: #252e3a; color: #8995a4; }
+        .btn-go { background: #23966c; }
+        .btn-go:hover { background: #2cad7d; }
+        .about-note { color: #b4bfcc; }
+        .card, .home-card { background-color: #171e28 !important; border-color: #2b3543 !important; }
+        .card-name { color: #edf1f5 !important; }
+        .card-size { color: #9aa6b5 !important; }
+        header .header-wrap > a, .index-intro h1, .about-copy h1 { color: #edf1f5 !important; }
+        .filter-control { color: #edf1f5 !important; }
+        main { padding-top: 16px; }
+        .ad-top, .ad-side, .card, .home-card, .filter-control, .dl-main-img { border-color: #2b3543 !important; }
+        .ad-top { min-height: 104px; margin-bottom: 28px !important; }
+        .ad-frame-top { min-height: 76px; }
+        .ad-frame-top iframe { height: 76px !important; }
+        .heading-txt { color: #e18a52; }
+        .badge-cat { background: rgba(156, 66, 22, .14); color: #e99a68; }
+        .index-intro { margin-top: 42px; }
+        .grid-download { align-items: start; }
+        .grid-download > .card { padding: 22px; }
+        .dl-header-row { margin-bottom: 16px; }
+        .dl-main-img { display: block; width: 100%; max-height: 440px; object-fit: cover; }
+        .btn-box { padding: 22px; text-align: left; }
+        .btn-box h3 { color: #edf1f5; font-size: 14px; letter-spacing: 0; margin-bottom: 7px; text-transform: none; }
+        .btn-box::after { content: "The download link will unlock after the short wait."; display: block; color: #8d99a8; font-size: 12px; line-height: 1.45; margin-bottom: 18px; }
+        .action-btn { display: block; width: 100%; min-height: 46px; border: 1px solid transparent; border-radius: 5px; font-family: "Space Grotesk", "Segoe UI", sans-serif; font-size: 12px; letter-spacing: .03em; padding: 0 16px; }
+        .btn-wait { background: #252e3a; border-color: #354252; color: #9aa6b5; }
+        .btn-go { background: #2aa477; border-color: #43c28f; color: #ffffff; }
+        .btn-go:hover { background: #35b987; }
+        .site-footer {
+            max-width: 1100px;
+            width: 100%;
+            box-sizing: border-box;
+            margin: auto auto 0;
+            padding: 24px 20px 28px;
+            color: #778596;
+            font-size: 11px;
+            line-height: 1.55;
+            text-align: center;
+        }
+        .site-footer strong { color: #a9b4c1; font-weight: 600; }
+    </style>
+    <style>
+        html, body { min-height: 100%; }
+        body { margin: 0; background: #10161e !important; color: #edf1f5 !important; font-family: "Space Grotesk", "Segoe UI", sans-serif !important; }
+        header { display: block; height: auto; padding: 18px 16px !important; background: #151c25 !important; border-bottom: 1px solid #26313e !important; }
+        .header-wrap { display: flex !important; align-items: center; justify-content: space-between; max-width: 1100px; margin: 0 auto; }
+        header .header-wrap > a { color: #edf1f5 !important; font: 700 21px "Space Grotesk", "Segoe UI", sans-serif !important; text-decoration: none !important; }
+        header .header-wrap > a span { color: #f0782b !important; }
+        .header-nav { display: flex !important; align-items: center; gap: 22px; }
+        .header-nav a { color: #b8c3d0 !important; font: 500 11px "DM Mono", monospace !important; text-decoration: none !important; }
+        main { width: 100%; max-width: 1100px; margin: 0 auto; padding: 16px 20px 0 !important; box-sizing: border-box; }
+        .ad-top, .ad-side { background: #141a22 !important; border: 1px solid #2b3543 !important; border-radius: 4px; }
+        .ad-top { min-height: 104px; margin-bottom: 18px; }
+        .index-intro { display: flex !important; align-items: end; justify-content: space-between; gap: 24px; margin: 42px 0 28px !important; }
+        .index-intro h1, .about-copy h1 { color: #edf1f5 !important; font-family: "Space Grotesk", "Segoe UI", sans-serif !important; }
+        .index-intro h1 { font-size: clamp(30px, 5vw, 48px) !important; line-height: 1.05; letter-spacing: -.02em; }
+        .index-intro p, .about-copy p { color: #a8b3c0 !important; }
+        .catalog-shell { border-top: 1px solid #26313e !important; padding-top: 20px; }
+        .catalog-tools { display: grid !important; grid-template-columns: minmax(220px, 2fr) 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+        .filter-control { min-height: 42px; box-sizing: border-box; background: #141a22 !important; border: 1px solid #2b3543 !important; border-radius: 5px; color: #edf1f5 !important; padding: 0 12px; font-family: "Space Grotesk", "Segoe UI", sans-serif !important; }
+        .grid-home { display: grid !important; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .card, .home-card { background: #171e28 !important; border: 1px solid #2b3543 !important; border-radius: 6px; box-shadow: 0 5px 16px rgba(0,0,0,.16); }
+        .home-card { display: flex !important; gap: 18px; padding: 16px; color: inherit; text-decoration: none; }
+        .card-thumb { width: 126px; height: 104px; object-fit: cover; flex-shrink: 0; border: 1px solid #2b3543; border-radius: 3px; }
+        .card-name { color: #edf1f5 !important; }
+        .card-size, .results-count, .stat span { color: #c2ccd8 !important; }
+        .about-layout { max-width: 700px; margin: 58px auto 40px !important; }
+        .about-copy { text-align: center; }
+        .about-copy h1 { font-size: clamp(34px, 5vw, 48px) !important; line-height: 1.05; letter-spacing: -.02em; margin: 0; }
+        .about-note { border-top: 2px solid #f0782b; color: #b4bfcc !important; padding: 14px 18px 0; }
+        .site-footer { max-width: 1100px; width: 100%; margin: auto auto 0; padding: 24px 20px 28px; box-sizing: border-box; color: #8e9baa !important; font-size: 11px; line-height: 1.55; text-align: center; }
+        .site-footer strong { color: #c1cad5 !important; }
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+            outline: 2px solid #f0782b;
+            outline-offset: 3px;
+        }
+        .home-card {
+            transition: transform .18s ease, border-color .18s ease, background-color .18s ease;
+        }
+        .home-card:hover { transform: translateY(-2px); }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+        }
+        @media (max-width: 640px) { .index-intro { align-items: start !important; flex-direction: column !important; margin-top: 36px !important; } .catalog-tools, .grid-home { grid-template-columns: 1fr !important; } .card-thumb { width: 100px; height: 92px; } }
     </style>
 </head>
 <body>
@@ -222,7 +661,10 @@
     <header>
         <div class="header-wrap">
             <a href="?">BEAM<span>DEX</span></a>
-            <div class="badge-status">Verified Safe</div>
+            <div class="header-nav">
+                <a href="?">HOME</a>
+                <a href="?page=about">ABOUT</a>
+            </div>
         </div>
     </header>
 
@@ -231,25 +673,32 @@
             <!-- PASTE YOUR 728x90 A-ADS SCRIPT HERE -->
 <!-- BEGIN AADS AD UNIT 2454179 -->
 
-<div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;">
+<div id="frame" class="ad-frame-top">
           <iframe data-aa='2454179' src='//acceptable.a-ads.com/2454179/?size=Adaptive'
-                            style='border:0; padding:0; width:70%; height:auto; overflow:hidden;display: block;margin: auto'></iframe>
+                            style='border:0; padding:0; width:100%; height:90px; overflow:hidden;display: block;margin: auto'></iframe>
         </div>
 
 <!-- END AADS AD UNIT 2454179 -->        </div>
 
         <div id="pageContent" class="loading-screen">Loading repository content...</div>
     </main>
+    <footer class="site-footer">
+        <strong>Beamdex is an index, not a file host.</strong><br>
+        We do not host mod files. Links lead to external websites and third-party services. We are not responsible for the content, availability, or security of external links.
+    </footer>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const activeSlug = urlParams.get('mod');
+        const isAboutPage = urlParams.get('page') === 'about';
 
         async function runSite() {
             try {
                 const res = await fetch('cars.json');
                 const database = await res.json();
 
-                if (activeSlug) {
+                if (isAboutPage) {
+                    showAboutPage();
+                } else if (activeSlug) {
                     const match = database.find(item => item.slug === activeSlug);
                     match ? showDownloadPage(match) : window.location.href = '?';
                 } else {
@@ -260,23 +709,78 @@
             }
         }
 
+        function showAboutPage() {
+            document.title = 'About Beamdex';
+            document.getElementById('pageContent').innerHTML = `
+                <div class="about-layout">
+                    <section class="about-copy">
+                        <div class="heading-txt">Beamdex / About</div>
+                        <h1>A better way<br>to find mods.</h1>
+                        <p>Beamdex is a focused index for BeamNG mods. Search the list, check the details, and keep the good stuff close.</p>
+                        <div class="about-note">Browse by type, search by name, or filter by developer to find the right mod faster.</div>
+                    </section>
+                </div>`;
+        }
+
         function showHomepage(cars) {
-            let layout = `<div class="heading-txt">Latest Community Vehicles</div><div class="grid-home">`;
-            cars.forEach(car => {
-                layout += `
-                    <a href="?mod=${car.slug}" class="card home-card">
-                        <img src="${car.image}" class="card-thumb" alt="Preview Thumbnail">
-                        <div class="card-meta">
-                            <div>
-                                <span class="badge-cat">${car.category}</span>
-                                <h3 class="card-name">${car.name}</h3>
+            const types = [...new Set(cars.map(car => car.type || 'Other'))].sort();
+            const developers = [...new Set(cars.map(car => car.developer || 'Unknown'))].sort();
+            const typeLabels = { Car: 'Cars', Map: 'Maps' };
+            const typeOptions = ['<option value="">All types</option>', ...types.map(type => `<option value="${type}">${typeLabels[type] || `${type}s`}</option>`)].join('');
+            const developerOptions = ['<option value="">All developers</option>', ...developers.map(developer => `<option value="${developer}">${developer}</option>`)].join('');
+
+            document.getElementById('pageContent').innerHTML = `
+                <section class="index-intro">
+                    <div>
+                        <div class="heading-txt">Beamdex / The BeamNG Mod Index</div>
+                        <h1>Find your next<br>BeamNG mod.</h1>
+                        <p>A simple index of vehicles, maps, and other mods for your BeamNG garage.</p>
+                    </div>
+                    <div class="index-stats">
+                        <div class="stat"><strong>${cars.length}</strong><span>mods</span></div>
+                    </div>
+                </section>
+                <section class="catalog-shell">
+                    <div class="catalog-tools">
+                        <input id="searchInput" class="filter-control" type="search" placeholder="Search cars, maps, developers..." aria-label="Search repository">
+                        <select id="typeFilter" class="filter-control" aria-label="Filter by type">${typeOptions}</select>
+                        <select id="developerFilter" class="filter-control" aria-label="Filter by developer">${developerOptions}</select>
+                    </div>
+                    <div id="resultsCount" class="results-count"></div>
+                    <div id="resultsGrid" class="grid-home"></div>
+                </section>`;
+
+            const renderResults = () => {
+                const search = document.getElementById('searchInput').value.trim().toLowerCase();
+                const selectedType = document.getElementById('typeFilter').value;
+                const selectedDeveloper = document.getElementById('developerFilter').value;
+                const filteredCars = cars.filter(car => {
+                    const searchable = `${car.name} ${car.type} ${car.developer}`.toLowerCase();
+                    return searchable.includes(search)
+                        && (!selectedType || (car.type || 'Other') === selectedType)
+                        && (!selectedDeveloper || (car.developer || 'Unknown') === selectedDeveloper);
+                });
+                document.getElementById('resultsCount').textContent = `${filteredCars.length} mod${filteredCars.length === 1 ? '' : 's'}`;
+                document.getElementById('resultsGrid').innerHTML = filteredCars.length
+                    ? filteredCars.map(car => `
+                        <a href="?mod=${encodeURIComponent(car.slug)}" class="card home-card">
+                            <img src="${car.image}" class="card-thumb" alt="${car.name} preview">
+                            <div class="card-meta">
+                                <div>
+                                    <span class="badge-cat">${car.type || 'Other'} · ${car.developer || 'Unknown'}</span>
+                                    <h3 class="card-name">${car.name}</h3>
+                                </div>
+                                <span class="card-size">${car.size}</span>
                             </div>
-                            <span class="card-size">${car.size}</span>
-                        </div>
-                    </a>`;
+                        </a>`).join('')
+                    : '<div class="empty-state">No matching content found.</div>';
+            };
+
+            ['searchInput', 'typeFilter', 'developerFilter'].forEach(id => {
+                document.getElementById(id).addEventListener('input', renderResults);
+                document.getElementById(id).addEventListener('change', renderResults);
             });
-            layout += `</div>`;
-            document.getElementById('pageContent').innerHTML = layout;
+            renderResults();
         }
 
         function showDownloadPage(car) {
@@ -285,7 +789,7 @@
                 <div class="grid-download">
                     <div class="card">
                         <div class="dl-header-row">
-                            <span class="badge-cat">${car.category}</span>
+                            <span class="badge-cat">${car.type || 'Other'} · ${car.developer || 'Unknown'}</span>
                             <span class="card-size" style="font-family: monospace;">${car.size}</span>
                         </div>
                         <h1 class="card-name" style="font-size: 22px; margin-bottom: 16px;">${car.name}</h1>
@@ -306,7 +810,7 @@
                             style='border:0; padding:0; width:300px; height:250px; overflow:hidden;display: block;margin: auto'></iframe>
         </div>
 
-<!-- END AADS AD UNIT 2454186 -->                            <span class="ad-label">[ Sidebar Ad Box ]</span>
+<!-- END AADS AD UNIT 2454186 -->
                         </div>
                     </div>
                 </div>`;
@@ -321,7 +825,7 @@
                     clearInterval(countdownTracker);
                     targetButton.disabled = false;
                     targetButton.className = "action-btn btn-go";
-                    targetButton.innerText = "🚀 Access Download Now";
+                    targetButton.innerText = "Download mod";
                     targetButton.onclick = () => window.location.href = car.downloadUrl;
                 }
             }, 1000);
