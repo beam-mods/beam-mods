@@ -1,117 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BeamNG Hub</title>
-    <script src="https://tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #0b0f17;
+            color: #e2e8f0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background-color: #111827;
+            border-bottom: 1px solid #1f2937;
+            padding: 16px;
+        }
+        .header-wrap {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+        }
+        header span {
+            color: #f97316;
+        }
+        .badge-status {
+            font-size: 12px;
+            color: #34d399;
+            background-color: rgba(6, 78, 59, 0.4);
+            border: 1px solid #064e3b;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        main {
+            flex-grow: 1;
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .ad-top {
+            width: 100%;
+            background-color: #111827;
+            border: 1px solid #1f2937;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+        .ad-label {
+            font-size: 11px;
+            color: #4b5563;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .grid-home {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        .grid-download {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+        @media (min-width: 768px) {
+            .grid-home { grid-template-columns: 1fr 1fr; }
+            .grid-download { grid-template-columns: 2fr 1fr; }
+        }
+        .heading-txt {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+        .card {
+            background-color: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 8px;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+        .home-card {
+            display: flex;
+            gap: 16px;
+            text-decoration: none;
+            color: inherit;
+            transition: border-color 0.2s;
+        }
+        .home-card:hover {
+            border-color: rgba(249, 115, 22, 0.5);
+        }
+        .card-thumb {
+            width: 90px;
+            height: 90px;
+            border-radius: 4px;
+            object-fit: cover;
+            border: 1px solid #1f2937;
+            flex-shrink: 0;
+        }
+        .card-meta {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .badge-cat {
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: #fb923c;
+            background-color: rgba(124, 45, 18, 0.4);
+            padding: 2px 8px;
+            border-radius: 4px;
+            width: max-content;
+        }
+        .card-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #ffffff;
+            margin: 6px 0 0 0;
+        }
+        .home-card:hover .card-name {
+            color: #fb923c;
+        }
+        .card-size {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+        .dl-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .dl-main-img {
+            width: 100%;
+            height: auto;
+            max-height: 380px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid #1f2937;
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .btn-box {
+            text-align: center;
+        }
+        .btn-box h3 {
+            font-size: 12px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            margin: 0 0 16px 0;
+            letter-spacing: 0.05em;
+        }
+        .action-btn {
+            width: 100%;
+            font-weight: bold;
+            padding: 14px 0;
+            border-radius: 6px;
+            font-size: 13px;
+            text-transform: uppercase;
+            border: none;
+            box-sizing: border-box;
+            letter-spacing: 0.05em;
+        }
+        .btn-wait {
+            background-color: #1f2937;
+            color: #6b7280;
+            cursor: not-allowed;
+        }
+        .btn-go {
+            background-color: #059669;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .btn-go:hover {
+            background-color: #10b981;
+        }
+        .ad-side {
+            width: 100%;
+            background-color: #111827;
+            border: 1px solid #1f2937;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .loading-screen {
+            text-align: center;
+            padding: 50px 0;
+            color: #9ca3af;
+        }
+    </style>
 </head>
-<body class="bg-[#0b0f17] text-[#e2e8f0] min-h-screen flex flex-col">
+<body>
 
-    <!-- Header Navigation -->
-    <header class="bg-[#111827] border-b border-[#1f2937] py-4 px-6">
-        <div class="max-w-5xl mx-auto flex justify-between items-center">
-            <a href="?" class="text-xl font-black text-white">BEAM<span class="text-orange-500">DRIVE</span></a>
-            <span class="text-xs text-emerald-400 bg-emerald-950/50 border border-emerald-900 px-2 py-1 rounded">Safe Mods</span>
+    <header>
+        <div class="header-wrap">
+            <a href="?">BEAM<span>DRIVE</span></a>
+            <div class="badge-status">Verified Safe</div>
         </div>
     </header>
 
-    <!-- Main Dynamic Content Frame -->
-    <main class="flex-grow max-w-5xl w-full mx-auto p-4 md:p-6 space-y-6">
-        
-        <!-- 💰 A-ADS PLACEMENT 1 (Top Banner) -->
-        <div class="w-full bg-[#111827] border border-[#1f2937] min-h-[90px] flex items-center justify-center rounded-md overflow-hidden">
-            <!-- PASTE YOUR TOP A-ADS HTML CODE HERE -->
-            <span class="text-xs text-gray-600">[ Top Ad Leaderboard ]</span>
+    <main>
+        <div class="ad-top">
+            <!-- PASTE YOUR 728x90 A-ADS SCRIPT HERE -->
+            <span class="ad-label">[ Top Ad Banner ]</span>
         </div>
 
-        <div id="pageContent" class="text-center py-10 text-gray-500">Loading mod repository...</div>
+        <div id="pageContent" class="loading-screen">Loading repository content...</div>
     </main>
-
     <script>
-        const params = new URLSearchParams(window.location.search);
-        const modSlug = params.get('mod');
+        const urlParams = new URLSearchParams(window.location.search);
+        const activeSlug = urlParams.get('mod');
 
-        // Automatically fetch data from cars.json on page load
-        async function initSite() {
+        async function runSite() {
             try {
-                const response = await fetch('cars.json');
-                const cars = await response.json();
+                const res = await fetch('cars.json');
+                const database = await res.json();
 
-                if (modSlug) {
-                    const activeCar = cars.find(c => c.slug === modSlug);
-                    activeCar ? renderDownloadPage(activeCar) : window.location.href = '?';
+                if (activeSlug) {
+                    const match = database.find(item => item.slug === activeSlug);
+                    match ? showDownloadPage(match) : window.location.href = '?';
                 } else {
-                    renderHomepage(cars);
+                    showHomepage(database);
                 }
-            } catch (error) {
-                document.getElementById('pageContent').innerHTML = "<p class='text-red-400'>Error loading data array.</p>";
+            } catch (err) {
+                document.getElementById('pageContent').innerHTML = "<p style='color: #ef4444; text-align: center;'>Database fetch failed.</p>";
             }
         }
 
-        // 🏠 Grid Homepage View
-        function renderHomepage(cars) {
-            let html = `<h2 class="text-lg font-bold text-white mb-4 text-left">Latest Vehicle Repository</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-4">`;
+        function showHomepage(cars) {
+            let layout = `<div class="heading-txt">Latest Community Vehicles</div><div class="grid-home">`;
             cars.forEach(car => {
-                html += `
-                    <a href="?mod=${car.slug}" class="bg-[#111827] border border-[#1f2937] hover:border-orange-500/50 p-4 rounded-lg flex gap-4 transition group text-left">
-                        <img src="${car.image}" class="w-24 h-24 rounded object-cover border border-[#1f2937]">
-                        <div class="flex flex-col justify-between">
+                layout += `
+                    <a href="?mod=${car.slug}" class="card home-card">
+                        <img src="${car.image}" class="card-thumb" alt="Preview Thumbnail">
+                        <div class="card-meta">
                             <div>
-                                <span class="text-[10px] uppercase font-bold text-orange-400 bg-orange-950/40 px-2 py-0.5 rounded">${car.category}</span>
-                                <h3 class="text-base font-bold text-white mt-1 group-hover:text-orange-400 transition">${car.name}</h3>
+                                <span class="badge-cat">${car.category}</span>
+                                <h3 class="card-name">${car.name}</h3>
                             </div>
-                            <span class="text-xs text-[#9ca3af]">${car.size}</span>
+                            <span class="card-size">${car.size}</span>
                         </div>
                     </a>`;
             });
-            html += `</div>`;
-            document.getElementById('pageContent').innerHTML = html;
+            layout += `</div>`;
+            document.getElementById('pageContent').innerHTML = layout;
         }
 
-        // 📥 Countdown Download View
-        function renderDownloadPage(car) {
+        function showDownloadPage(car) {
             document.title = `Download ${car.name}`;
             document.getElementById('pageContent').innerHTML = `
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 text-left">
-                    <div class="lg:col-span-2 space-y-4">
-                        <div class="bg-[#111827] border border-[#1f2937] rounded-lg p-5">
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-xs font-bold text-orange-400 bg-orange-950/40 px-2 py-0.5 rounded">${car.category}</span>
-                                <span class="text-xs text-[#9ca3af] font-mono">${car.size}</span>
-                            </div>
-                            <h1 class="text-xl font-bold text-white mb-4">${car.name}</h1>
-                            <img src="${car.image}" class="w-full h-auto max-h-[350px] object-cover rounded border border-[#1f2937]">
+                <div class="grid-download">
+                    <div class="card">
+                        <div class="dl-header-row">
+                            <span class="badge-cat">${car.category}</span>
+                            <span class="card-size" style="font-family: monospace;">${car.size}</span>
                         </div>
+                        <h1 class="card-name" style="font-size: 22px; margin-bottom: 16px;">${car.name}</h1>
+                        <img src="${car.image}" class="dl-main-img" alt="Main Showcase Grid Render">
                     </div>
-                    <div class="space-y-4">
-                        <div class="bg-[#111827] border border-[#1f2937] rounded-lg p-5 text-center shadow-lg">
-                            <button id="timerBtn" disabled class="w-full bg-[#1f2937] text-[#6b7280] font-bold py-3 rounded text-sm uppercase">Generating Route (5s)</button>
+                    
+                    <div class="sidebar">
+                        <div class="card btn-box">
+                            <h3>File Security Check</h3>
+                            <button id="timerBtn" disabled class="action-btn btn-wait">Preparing Route (5s)</button>
                         </div>
                         
-                        <!-- 💰 A-ADS PLACEMENT 2 (Sidebar Box) -->
-                        <div class="w-full bg-[#111827] border border-[#1f2937] min-h-[250px] flex items-center justify-center rounded-md overflow-hidden">
-                            <!-- PASTE YOUR SIDEBAR A-ADS HTML CODE HERE -->
-                            <span class="text-xs text-gray-600">[ Sidebar Ad Box ]</span>
+                        <div class="ad-side">
+                            <!-- PASTE YOUR 300x250 A-ADS SCRIPT HERE -->
+                            <span class="ad-label">[ Sidebar Ad Box ]</span>
                         </div>
                     </div>
                 </div>`;
 
-            let count = 5;
-            const btn = document.getElementById('timerBtn');
-            const interval = setInterval(() => {
-                count--;
-                if (count > 0) { btn.innerText = `Generating Route (${count}s)`; } 
-                else {
-                    clearInterval(interval);
-                    btn.disabled = false;
-                    btn.className = "w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded text-sm uppercase transition cursor-pointer";
-                    btn.innerText = "🚀 Direct Download Now";
-                    btn.onclick = () => window.location.href = car.downloadUrl;
+            let timerSeconds = 5;
+            const targetButton = document.getElementById('timerBtn');
+            const countdownTracker = setInterval(() => {
+                timerSeconds--;
+                if (timerSeconds > 0) {
+                    targetButton.innerText = `Preparing Route (${timerSeconds}s)`;
+                } else {
+                    clearInterval(countdownTracker);
+                    targetButton.disabled = false;
+                    targetButton.className = "action-btn btn-go";
+                    targetButton.innerText = "🚀 Access Download Now";
+                    targetButton.onclick = () => window.location.href = car.downloadUrl;
                 }
             }, 1000);
         }
 
-        initSite();
+        runSite();
     </script>
 </body>
 </html>
